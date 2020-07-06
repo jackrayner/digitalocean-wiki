@@ -21,13 +21,30 @@ variable "droplet_name" {
 
 variable "droplet_size" {
   type        = string
-  description = "DigitalOcean droplet size."
+  description = "Droplet size."
+}
+
+variable "droplet_image" {
+  type        = string
+  default     = "ubuntu-20-04-x64"
+  description = "Droplet image."
+}
+
+variable "dokuwiki_version" {
+  type        = string
+  default     = "2018-04-22c"
+  description = "Dokuwiki version."
 }
 
 variable "volume_size" {
   type        = number
   default     = 5
-  description = "DigitalOcean volume size."
+  description = "Droplet volume size."
+}
+
+variable "admin_email" {
+  type        = string
+  description = "Apache admin email."
 }
 
 variable "ssh_keys" {
