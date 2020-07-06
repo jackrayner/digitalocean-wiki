@@ -16,7 +16,7 @@ data "template_file" "user_data" {
 }
 
 resource "digitalocean_droplet" "wiki" {
-  image     = "ubuntu-20-04-x64"
+  image     = "centos-8-x64"
   name      = var.droplet_name
   region    = var.region
   size      = var.droplet_size
@@ -27,5 +27,5 @@ resource "digitalocean_droplet" "wiki" {
 
 
 output "fqdn" {
-  value = [digitalocean_record.wiki.fqdn]
+  value = "ssh -o \"UserKnownHostsFile /dev/null\" root@${digitalocean_record.wiki.fqdn}"
 }
