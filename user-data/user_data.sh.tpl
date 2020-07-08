@@ -2,7 +2,6 @@
 
 # Mount the volume
 mkdir -p ${volume_mountpoint}
-chown -R www-data:www-data ${volume_mountpoint}
 mount -o discard,defaults /dev/disk/by-label/${volume_name} ${volume_mountpoint}
 echo /dev/disk/by-label/${volume_name} ${volume_mountpoint} ext4 defaults,nofail,discard 0 0 | sudo tee -a /etc/fstab
 
@@ -21,6 +20,7 @@ cd /tmp
 wget https://download.dokuwiki.org/src/dokuwiki/dokuwiki-${dokuwiki_version}.tgz
 tar xvf dokuwiki-${dokuwiki_version}.tgz
 'cp' -af dokuwiki-${dokuwiki_version}/* ${volume_mountpoint}/
+chown -R www-data:www-data ${volume_mountpoint}
 cd ${volume_mountpoint}
 grep -Ev '^($|#)' data/deleted.files | xargs -n 1 rm -vf
 
