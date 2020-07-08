@@ -1,3 +1,5 @@
+# Author: Jack Rayner <hello@jrayner.net>
+
 resource "digitalocean_volume" "wiki_volume" {
   region                   = var.region
   name                     = "wiki-volume"

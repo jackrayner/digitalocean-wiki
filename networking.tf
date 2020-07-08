@@ -1,3 +1,5 @@
+# Author: Jack Rayner <hello@jrayner.net>
+
 resource "digitalocean_record" "wiki" {
   domain = var.domain
   name   = var.droplet_name

@@ -1,3 +1,5 @@
+# Author: Jack Rayner <hello@jrayner.net>
+
 variable "domain" {
   type        = string
   description = "Domain name."

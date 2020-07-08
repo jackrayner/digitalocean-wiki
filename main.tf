@@ -1,3 +1,5 @@
+# Author: Jack Rayner <hello@jrayner.net>
+
 provider "digitalocean" {
 }
 

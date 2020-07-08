@@ -1,3 +1,5 @@
+# Author: Jack Rayner <hello@jrayner.net>
+
 data "template_file" "user_data" {
   template = "${file("${path.module}/user-data/user_data.sh.tpl")}"
   vars = {
@@ -5,6 +7,7 @@ data "template_file" "user_data" {
     domain            = var.domain
     dokuwiki_version  = var.dokuwiki_version
     volume_name       = digitalocean_volume.wiki_volume.name
+    certbot_email     = var.admin_email
     volume_mountpoint = "/var/www/dokuwiki"
   }
 }
