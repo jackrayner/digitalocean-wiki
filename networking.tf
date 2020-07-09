@@ -2,14 +2,14 @@
 
 resource "digitalocean_record" "wiki" {
   domain = var.domain
-  name   = var.droplet_name
+  name   = var.hostname
   type   = "A"
   value  = digitalocean_droplet.wiki.ipv4_address
   ttl    = var.dns_ttl
 }
 
 resource "digitalocean_firewall" "wiki" {
-  name = "wiki-firewall"
+  name = "dokuwiki-${terraform.workspace}"
 
   droplet_ids = [digitalocean_droplet.wiki.id]
 

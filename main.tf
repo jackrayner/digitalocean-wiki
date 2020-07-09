@@ -9,7 +9,7 @@ terraform {
 
 resource "digitalocean_droplet" "wiki" {
   image     = var.droplet_image
-  name      = var.droplet_name
+  name      = "dokuwiki-${terraform.workspace}"
   region    = var.region
   size      = var.droplet_size
   ssh_keys  = var.ssh_keys

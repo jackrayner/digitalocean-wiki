@@ -3,19 +3,20 @@
 data "template_file" "user_data" {
   template = "${file("${path.module}/user-data/user_data.sh.tpl")}"
   vars = {
-    hostname          = var.droplet_name
-    domain            = var.domain
-    dokuwiki_version  = var.dokuwiki_version
-    volume_name       = digitalocean_volume.wiki_volume.name
-    certbot_email     = var.admin_email
-    volume_mountpoint = "/var/www/dokuwiki"
+    hostname         = var.hostname
+    domain           = var.domain
+    dokuwiki_version = var.dokuwiki_version
+    volume_name      = join("", digitalocean_volume.wiki_volume.*.name)
+    certbot_email    = var.admin_email
+    document_root    = "/var/www/dokuwiki"
+    use_volume       = var.use_volume
   }
 }
 
 data "template_file" "apache_site_conf" {
   template = "${file("${path.module}/user-data/010-dokuwiki.conf.tpl")}"
   vars = {
-    server_name        = var.droplet_name
+    server_name        = var.hostname
     document_root      = "/var/www/dokuwiki"
     server_admin_email = var.admin_email
   }

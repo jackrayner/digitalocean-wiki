@@ -5,6 +5,12 @@ variable "domain" {
   description = "Domain name."
 }
 
+variable "hostname" {
+  type        = string
+  default     = "wiki"
+  description = "Domain name."
+}
+
 variable "region" {
   type        = string
   description = "DigitalOcean region."
@@ -14,11 +20,6 @@ variable "ssh_ip_range" {
   type        = list(string)
   default     = ["0.0.0.0/0", "::/0"]
   description = "List of IP addresses or IP ranges for SSH access."
-}
-
-variable "droplet_name" {
-  type        = string
-  description = "Name for the wiki droplet."
 }
 
 variable "droplet_size" {
@@ -42,6 +43,12 @@ variable "volume_size" {
   type        = number
   default     = 5
   description = "Droplet volume size."
+}
+
+variable "use_volume" {
+  type        = string
+  default     = "true"
+  description = "Use a volume for storing the wiki data."
 }
 
 variable "admin_email" {
